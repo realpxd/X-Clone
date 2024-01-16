@@ -1,7 +1,7 @@
 "use client"
 import Image from 'next/image'
 import LandingPage from './pages/landingPage'
-import HomePage from './pages/feed/page.js'
+import HomePage from '@app/components/home/HomeNav.js'
 import {useEffect, useState } from 'react'
 
 export default function Home() {

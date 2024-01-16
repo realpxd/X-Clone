@@ -25,7 +25,7 @@ const followingHome = (props) => {
       })
       const data = await res.json()
       console.log(data)
-      setPosts(data.reverse());
+      setPosts(data);
       setConnectionString('Connection established :)')
       setErrorFetchingData(false)
     } catch (err) {
@@ -57,7 +57,7 @@ const followingHome = (props) => {
       {posts.map((post) => {
         return (
 
-          <div className='px-2 border-b pb-4 pt-4 text-base'>
+          <div key={post._id} className='px-2 border-b border-gray-600 pb-4 pt-4 text-base'>
             {/* <p>reposted</p> */}
             <div className='flex flex-row flex-nowrap w-full justify-evenly'>
               <div className='w-1/6 flex flex-col justify-start h-full items-center'>
@@ -71,7 +71,7 @@ const followingHome = (props) => {
                 <div className='flex flex-col flex-nowrap justify-center'>
 
                   <p>{post.post}</p>
-                  <p>{post.image}</p>
+                  {/* <p>{post.image}</p> */}
                 </div>
                 <div className='flex flex-row flex-nowrap justify-between items-center mt-2'>
                   <FontAwesomeIcon icon={farComment} />
