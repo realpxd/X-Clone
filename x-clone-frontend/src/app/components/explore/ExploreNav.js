@@ -7,6 +7,7 @@ const ExploreNav = () => {
     const [currSection, setCurrSection] = useState(true)
     const categories = ['For you', 'Trending', 'News', 'Sports', 'Entertainment'];
     const navs = {}
+    const classesToAdd = 'before:absolute before:w-full before:top-7 before:rounded-full before:border-b-4 before:border-blue-900'
 
     categories.forEach((name) => {
         navs[name] = useRef(null);
@@ -14,8 +15,7 @@ const ExploreNav = () => {
   
 
     const handleSection = () => {
-        let classesToAdd = 'before:absolute before:w-full before:top-7 before:rounded-full before:border-b-4 before:border-blue-900'.split(' ')
-        classesToAdd.forEach((className) => {
+        classesToAdd.split(' ').forEach((className) => {
             Object.values(navs).forEach((nav) => {
                 if (nav.current.classList.contains(className)) nav.current.classList.remove(className)
             })
@@ -35,9 +35,9 @@ const ExploreNav = () => {
 
                     <FontAwesomeIcon className='' icon={fasGear} />
                 </div>
-                <div className='w-fit text-center overflow-x-auto flex flex-row flex-nowrap justify-start items-center text-base font-semibold pb-3 gap-4 *:cursor-pointer  '>
+                <div className='w-full text-center overflow-x-auto flex flex-row flex-nowrap justify-evenly items-center text-base font-semibold pb-3 gap-4 *:cursor-pointer  '>
                     {categories.map((category, index) => (
-                        <p  className={category=="For you" ? 'before:absolute before:w-full before:top-7 before:rounded-full before:border-b-4 before:border-blue-900 relative' : 'relative'} key={category} ref={navs[category]} onClick={handleSection}>{category}</p>
+                        <p  className={`relative ${category=="For you" ? classesToAdd : null}`} key={category} ref={navs[category]} onClick={handleSection}>{category}</p>
                     ))}
                 </div>
             </div>

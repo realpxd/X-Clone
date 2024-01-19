@@ -1,46 +1,54 @@
 "use client"
 
-import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
-export default function Page() {
-  const [formContent , setFormContent] = useState({})
-  
+export default function GetStarted() {
+  const [formContent, setFormContent] = useState({})
+  const router = useRouter()
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     const form = e.target
     const data = new FormData(form)
     const value = Object.fromEntries(data.entries())
-    console.log(value)
-    
-    const response = await fetch('http://localhost:5000/loginUser', {
-      method: 'POST',
-      body: JSON.stringify(value),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    const result = await response.json()
-    console.log(result)
-    localStorage.setItem('userData' , JSON.stringify(result))
-    console.log(localStorage.getItem('userData'))
 
+    try {
+      const response = await fetch('http://localhost:5000/addUser', {
+        method: 'POST',
+        body: JSON.stringify(value),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      const result = await response.json()
+      console.log(result)
+
+      localStorage.setItem('userData', JSON.stringify(result))
+      console.log(localStorage.getItem('userData'))
+      router.push('/feed')
+    } catch (err) {
+      console.log(err)
+    }
   }
-  
+
   var formData = {
-    email: ['Email' , 'text'],
-    password: ['Password' , 'password'],
+    username: ['Username', 'text'],
+    name: ['Name', 'text'],
+    email: ['Email', 'email'],
+    password: ['Password', 'password'],
+    passwordConfirm: ['Confirm pass', 'password']
   }
-  
+
 
   return (
-    
+
     <div className='bg-red-500 h-screen p-5 text-center flex flex-row flex-nowrap justify-center items-center gap-1'>
       <div className='bg-red-400 p-5 rounded-3xl'>
-        <h1 className='text-2xl text-white font-bold mb-4 bg-red-500 py-1.5 px-3 rounded-2xl w-fit m-auto'>Welcome Back!</h1>
-        <form onSubmit={(e)=>handleSubmit(e)} method="post" className='text-left bg-red-500 p-5 rounded-3xl'>
-          
-          {Object.values(formData).map((item , index) => {
+        <h1 className='text-2xl text-white font-bold mb-4 bg-red-500 py-1.5 px-3 rounded-2xl w-fit m-auto'>Get Started</h1>
+        <form onSubmit={(e) => handleSubmit(e)} method="post" className='text-left bg-red-500 p-5 rounded-3xl'>
+
+          {Object.values(formData).map((item, index) => {
             return (
               <div className='mb-3 rounded-2xl overflow-hidden flex flex-coloumn flex-nowrap gap-4 justify-between items-center' key={index}>
                 <label className='font-semibold text-white' htmlFor={item[0]}>{item[0]}: </label>
@@ -48,7 +56,7 @@ export default function Page() {
               </div>
             )
           })}
-          
+
           <div>
             <button className='bg-black font-semibold text-white px-4 py-2 w-full rounded-2xl mt-4 border-2 border-transparent hover:bg-transparent hover:border-2 hover:border-black transition-all' type="submit">Submit</button>
           </div>

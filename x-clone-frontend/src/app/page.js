@@ -3,10 +3,12 @@ import Image from 'next/image'
 import LandingPage from './pages/landingPage'
 import HomePage from '@/app/components/home/HomeNav.js'
 import {useEffect, useState } from 'react'
+import { useRouter, usePathname } from 'next/navigation';
 
 export default function Home() {
   const [userRegistered, setUserRegistered] = useState(false)
   const [userData , setUserData] = useState({})
+  const router = useRouter();
   // console.log(userRegistered)
   const checkUserRegistered = async () => {
     const storedUserData = localStorage.getItem('userData');
@@ -34,7 +36,7 @@ export default function Home() {
 
   return (
     <main className='text-2xl w-screen h-screen overflow-hidden'>
-      {userRegistered ? <HomePage userRegistered={userRegistered} userData={userData} /> : <LandingPage userRegistered={userRegistered} userData={userData} />}
+      {userRegistered ? router.push("/feed") : <LandingPage userRegistered={userRegistered} userData={userData} />}
     </main>
   )
 }

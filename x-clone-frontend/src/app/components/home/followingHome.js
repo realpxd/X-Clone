@@ -54,7 +54,7 @@ const followingHome = (props) => {
   return (
     <>
       {errorFetchingData && <p className='text-red-400 font-bold text-center pt-10 w-5/6 m-auto'>There was an error fetching data :( , <br /> {connectionString} </p>}
-      {posts.map((post) => {
+      {posts ? posts.map((post) => {
         return (
 
           <div key={post._id} className='px-2 border-b border-gray-600 pb-4 pt-4 text-base'>
@@ -87,7 +87,7 @@ const followingHome = (props) => {
             </div>
           </div>
         )
-      })}
+      }) : setErrorFetchingData(true)}
     </>
   )
 }
