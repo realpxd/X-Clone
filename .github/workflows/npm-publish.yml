@@ -20,10 +20,10 @@ jobs:
     - name: Navigate to server directory
       run: cd x-clone-backend
     - name: Listing server files
-      run: ls
+      run: ls && pwd
 
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+      uses: cd x-clone-backend && pwd && ls && actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
