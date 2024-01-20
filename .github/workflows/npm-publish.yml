@@ -13,7 +13,7 @@ on:
       working-directory:
         description: Working directory to use
         type: string
-        default: './x-clone-backend'
+        default: ./x-clone-backend
   push:
     branches: [ "main" ]
 
