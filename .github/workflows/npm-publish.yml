@@ -18,17 +18,13 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Navigate to server directory
-      run: cd x-clone-backend
-    - name: Listing server files
-      run: ls && pwd
-
+      run: cd x-clone-backend && ls && pwd
+    - run: cd x-clone-backend && ls && pwd
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
-        run: cd x-clone-backend && ls && pwd
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: cd x-clone-backend && pwd && ls
     - run: npm ci
     - run: npm test
     - run: pm2 restart backendserver
