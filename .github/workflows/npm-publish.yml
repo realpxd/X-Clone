@@ -23,8 +23,9 @@ jobs:
       run: ls && pwd
 
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: cd x-clone-backend && pwd && ls && actions/setup-node@v3
+      uses: actions/setup-node@v3
       with:
+        run: cd x-clone-backend && ls && pwd
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: cd x-clone-backend && pwd && ls
