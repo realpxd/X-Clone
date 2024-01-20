@@ -111,7 +111,7 @@ app.get('/', (req, res) => {
             res.send(allPosts)
         } catch (err) {
             console.log(err)
-            res.send(false)
+            res.send(err)
             res.status(405).json('Error: ' + err);
         }
     }
