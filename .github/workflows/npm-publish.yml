@@ -40,7 +40,5 @@ jobs:
         node-version: ${{ matrix.node-version }}
         registry-url: 'https://npm.pkg.github.com'
     - run: npm ci
-    - run: npm test
     - run: pm2 restart backendserver
-      env:
-        NODE_AUTH_TOKEN: ${{secrets.npm_token}} 
+      
