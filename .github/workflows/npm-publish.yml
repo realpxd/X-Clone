@@ -27,7 +27,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-
+    - run: cd x-clone-backend && pwd && ls
     - run: npm ci
     - run: npm test
     - run: pm2 restart backendserver
