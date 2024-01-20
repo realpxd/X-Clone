@@ -27,18 +27,25 @@ jobs:
       matrix:
         node-version: [18.x]
 
+    env:
+      MONGODB_URI: ${{ secrets.ATLAS_URI }}
+      # Add other environment variables as needed
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
 
     - name: Navigate to server directory
       run: ls && pwd
-    - run: ls && pwd
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         registry-url: 'https://npm.pkg.github.com'
+
     - run: npm ci
-    - run: pm2 restart backendserver
-      
+
+    - run: |
+        pm2 restart backendserver
+        # Use $MONGODB_URI in your Node.js application
