@@ -38,7 +38,12 @@ jobs:
       run: echo "ATLAS_URI:$ATLAS_URI"
     - name: Direct Debug Environment Variable
       run: echo "ATLAS_URI:${{ secrets.ATLAS_URI }}"
-       
+
+    - name: create env file
+      run: |
+        touch .env
+        echo ATLAS_URI${{ secrets.ATLAS_URI }} >> .env
+        
     - name: Navigate to server directory
       run: ls && pwd
     
