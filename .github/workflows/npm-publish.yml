@@ -29,11 +29,14 @@ jobs:
 
     env:
       ATLAS_URI: ${{ secrets.ATLAS_URI }}
-      
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
 
+    - name: Debug Environment Variable
+      run: echo 'ATLAS_URI:${{$ATLAS_URI}}'
+       
     - name: Navigate to server directory
       run: ls && pwd
     
