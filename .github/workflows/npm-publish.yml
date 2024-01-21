@@ -50,6 +50,4 @@ jobs:
 
     - run: |
         pm2 list
-        pm2 logs backendserver
-        pm2 restart backendserver --update-env
         
