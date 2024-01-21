@@ -24,6 +24,7 @@ const connectDB = async () => {
             .catch((err) => {
                 console.log('Error connecting to database: ', err);
                 console.log('Retrying connection in 5 seconds...');
+        console.log('Connecting to MongoDB with URI:', uri);
                 setTimeout(() => {
                     connectDB()
                 }, 5000);
