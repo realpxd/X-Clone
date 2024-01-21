@@ -17,6 +17,7 @@ const uri = process.env.ATLAS_URI
 //     .catch((e) => console.log(e));
 
 const connectDB = async () => {
+        console.log('Connecting to MongoDB with URI:', uri);
     try {
         await mongoose.connect(uri)
             .then(() => console.log('"Connected to database"'))
