@@ -35,7 +35,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Debug Environment Variable
-      run: echo 'ATLAS_URI:${{$ATLAS_URI}}'
+      run: echo "ATLAS_URI:$ATLAS_URI"
        
     - name: Navigate to server directory
       run: ls && pwd
