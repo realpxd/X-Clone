@@ -43,6 +43,8 @@ jobs:
       run: |
         touch .env
         echo ATLAS_URI${{ secrets.ATLAS_URI }} >> .env
+        echo "______"
+        cat .env
         
     - name: Navigate to server directory
       run: ls && pwd
