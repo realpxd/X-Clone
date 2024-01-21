@@ -36,7 +36,7 @@ jobs:
 
     - name: Navigate to server directory
       run: ls && pwd
-
+    
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
@@ -46,5 +46,7 @@ jobs:
     - run: npm ci
 
     - run: |
-        pm2 restart backendserver
+        pm2 list
+        pm2 logs backendserver
+        pm2 restart backendserver --update-env
         
