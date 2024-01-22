@@ -43,7 +43,7 @@ jobs:
       run: |
         echo "___________"
         touch .env
-        echo ATLAS_URI:${{ secrets.ATLAS_URI }} >> .env
+        echo ATLAS_URI1: $ATLAS_URI >> .env
         echo "##################"
         cat .env
         echo "____________"
@@ -63,7 +63,7 @@ jobs:
 
     - run: |
         touch .env
-        echo ATLAS_URI:${{ secrets.ATLAS_URI }} >> .env
+        echo ATLAS_URI: ${{ secrets.ATLAS_URI }} >> .env
         echo "____________"
         cat .env
         ls -A
