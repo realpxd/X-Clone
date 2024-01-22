@@ -41,17 +41,14 @@ jobs:
 
     - name: create env file
       run: |
-        touch .env
-        echo ATLAS_URI${{ secrets.ATLAS_URI }} >> .env
         echo "___________"
-        cat .env
-        ls
+        touch .env
+        echo ATLAS_URI:${{ secrets.ATLAS_URI }} >> .env
         echo "##################"
-        touch test.txt
-        echo "testing" >> test.txt
+        cat .env
         echo "____________"
-        cat test.txt
         ls
+        echo "____________"
         
     - name: Navigate to server directory
       run: ls && pwd
@@ -66,8 +63,8 @@ jobs:
 
     - run: |
         touch .env
-        echo ATLAS_URI${{ secrets.ATLAS_URI }} >> .env
-        echo "______"
+        echo ATLAS_URI:${{ secrets.ATLAS_URI }} >> .env
+        echo "____________"
         cat .env
         ls -A
         pm2 list
