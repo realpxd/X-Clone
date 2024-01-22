@@ -33,8 +33,6 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-    
-    - run: git branch main 5f136ab
 
     - name: Create env file and Navigate to server directory
       run: |
@@ -67,5 +65,5 @@ jobs:
         ls -A
         echo "#########>pm2 commands below<#########"
         pm2 list
-        pm2 logs backendserver --lines 40
         pm2 restart backendserver --update-env
+        pm2 logs backendserver --lines 40
