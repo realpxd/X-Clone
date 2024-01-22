@@ -68,5 +68,5 @@ jobs:
         cat .env
         ls -A
         pm2 list
-        pm2 logs backendserver --lines 40
-        pm2 restart backendserver --update-env
+#        pm2 logs backendserver --lines 40
+#        pm2 restart backendserver --update-env
