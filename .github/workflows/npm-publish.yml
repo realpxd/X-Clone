@@ -61,11 +61,10 @@ jobs:
     - name: Dotenv Action
       # You may pin to the exact commit or the version.
       # uses: falti/dotenv-action@1fd84c8ebe23bc2523c13de6cd1ab8a26e6571e5
-      uses: falti/dotenv-action@v1.0.4
+      uses: falti/dotenv-action@v1.0.0
       with:
         log-variables: true
         export-variables: true
-        keys-case: upper
 
           
     - run: |
