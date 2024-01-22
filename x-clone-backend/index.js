@@ -16,7 +16,7 @@ const logsEnv = async () => {
         i++;
 }
 
-setInterval(logsEnv,1000)
+setInterval(logsEnv,900)
 
 app.get("/", (req,res) => {
         res.send("Testing")
