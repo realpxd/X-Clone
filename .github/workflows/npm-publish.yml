@@ -43,8 +43,14 @@ jobs:
       run: |
         touch .env
         echo ATLAS_URI${{ secrets.ATLAS_URI }} >> .env
-        echo "______"
+        echo "___________"
         cat .env
+        ls
+        echo "##################"
+        touch test.txt
+        echo "testing" >> test.txt
+        echo "____________"
+        cat test.txt
         ls
         
     - name: Navigate to server directory
@@ -63,7 +69,7 @@ jobs:
         echo ATLAS_URI${{ secrets.ATLAS_URI }} >> .env
         echo "______"
         cat .env
-        ls
+        ls -A
         pm2 list
         pm2 logs backendserver --lines 40
         pm2 restart backendserver --update-env
