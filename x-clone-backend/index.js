@@ -11,12 +11,6 @@ const port = process.env.PORT || 5000
 const uri = process.env.ATLAS_URI
 
 
-// mongoose
-//     .connect(uri)
-//     .then(() => {
-//         console.log("Connected to database");
-//     })
-//     .catch((e) => console.log(e));
 
 const connectDB = async () => {
     console.log('Connecting to MongoDB with URI:', uri);
