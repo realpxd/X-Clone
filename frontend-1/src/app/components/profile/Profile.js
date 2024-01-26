@@ -39,7 +39,7 @@ const Profile = (props) => {
 
     const fetchUserData = async () => {
         try {
-            const res = await fetch(process.env.GETUSERDATA, {
+            const res = await fetch('http://localhost:5000/getUser', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -66,7 +66,7 @@ const Profile = (props) => {
 
     const fetchUserPosts = async () => {
         try {
-            const res = await fetch(process.env.GETUSERPOSTS, {
+            const res = await fetch('http://localhost:5000/getUserPosts', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

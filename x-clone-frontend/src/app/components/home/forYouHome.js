@@ -18,7 +18,7 @@ const forYouHome = (props) => {
       }
       counter++
       console.log(counter)
-      const res = await fetch('http://localhost:5000/', {
+      const res = await fetch(process.env.SERVER, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -53,7 +53,7 @@ const forYouHome = (props) => {
   const handleLike = async (post) => {
     console.log(post)
     try {
-      const res = await fetch('http://localhost:5000/likePost', {
+      const res = await fetch(process.env.LIKEPOST, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

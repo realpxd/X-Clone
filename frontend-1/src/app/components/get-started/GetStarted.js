@@ -15,7 +15,7 @@ export default function GetStarted() {
     const value = Object.fromEntries(data.entries())
 
     try {
-      const response = await fetch(process.env.REGISTER, {
+      const response = await fetch('http://localhost:5000/addUser', {
         method: 'POST',
         body: JSON.stringify(value),
         headers: {

@@ -97,7 +97,7 @@ const postsSchema = new mongoose.Schema({
 const NewUser = mongoose.model('users', usersSchema);
 const NewPosts = mongoose.model('posts', postsSchema);
 
-app.get('/', (req, res) => {
+app.post('/', (req, res) => {
     //fetch all posts and send it on res
     const getAllPosts = async () => {
         try {

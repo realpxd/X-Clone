@@ -16,7 +16,7 @@ export default function Login() {
     const value = Object.fromEntries(data.entries())
     console.log(value)
     try {
-      const response = await fetch(process.env.LOGIN, {
+      const response = await fetch('http://localhost:5000/loginUser', {
         method: 'POST',
         body: JSON.stringify(value),
         headers: {

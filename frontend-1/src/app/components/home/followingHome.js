@@ -17,7 +17,7 @@ const followingHome = (props) => {
       }
       counter++
       console.log(counter)
-      const res = await fetch(process.env.SERVER, {
+      const res = await fetch('http://localhost:5000/', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
