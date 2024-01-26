@@ -10,7 +10,10 @@ app.use(express.json())
 const port = process.env.PORT || 5000
 const uri = process.env.ATLAS_URI
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 42a8091ddfa56f48c408782c22d0eea1f8473aee
 const connectDB = async () => {
     try {
         await mongoose.connect(uri)
