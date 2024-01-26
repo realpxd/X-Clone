@@ -24,7 +24,10 @@ const HomeNav = () => {
     const pathname = usePathname()
 
     if (pathQuery.get('isMakeTweet') == 1) {
-        isMakeTweet.current.focus()
+
+        if (isMakeTweet.current) {
+            isMakeTweet.current.focus()
+        }
     }
 
     const handleMakeTweet = () => {
@@ -96,29 +99,31 @@ const HomeNav = () => {
                         <p className='relative' datatype='false' ref={fl} onClick={handleSection}>Following</p>
                     </div>
                 </div>
-                <form onSubmit={(e) => handleSubmit(e)} className='w-full flex flex-col flex-nowrap justify-evenly text-base'>
-                    <div className='w-full flex flex-row flex-nowrap justify-start items-center '>
-                        {/* <Image src={}></Image> */}
-                        <p className='mx-3 mr-1 mt-3 bg-red-500 rounded-full px-4 py-2 text-center'>p</p>
-                        <textarea onFocus={handleMakeTweet} ref={isMakeTweet} className='w-full border-none bg-transparent outline-none line-clamp-none h-10 max-h-fit text-white border-white border-2 text-xl placeholder:text-gray-500 placeholder:py-0 mt-3 focus:outline-none focus:border-none focus:placeholder:py-0 ' id='post' placeholder='What is happening?!' />
-                    </div>
-                    <div className='w-full flex flex-row flex-nowrap justify-between items-center mt-4 border-b border-gray-600 pb-3'>
-                        <div className='w-1/4 ml-20 flex text-blue-400 flex-row flex-nowrap justify-evenly items-center *:cursor-pointer'>
-                            {/* <input type="image" placeholder='i' src="" alt="" />
+                {userData &&
+                    <form onSubmit={(e) => handleSubmit(e)} className='w-full flex flex-col flex-nowrap justify-evenly text-base'>
+                        <div className='w-full flex flex-row flex-nowrap justify-start items-center '>
+                            {/* <Image src={}></Image> */}
+                            <p className='mx-3 mr-1 mt-3 bg-red-500 rounded-full px-4 py-2 text-center'>p</p>
+                            <textarea onFocus={handleMakeTweet} ref={isMakeTweet} className='w-full border-none bg-transparent outline-none line-clamp-none h-10 max-h-fit text-white border-white border-2 text-xl placeholder:text-gray-500 placeholder:py-0 mt-3 focus:outline-none focus:border-none focus:placeholder:py-0 ' id='post' placeholder='What is happening?!' />
+                        </div>
+                        <div className='w-full flex flex-row flex-nowrap justify-between items-center mt-4 border-b border-gray-600 pb-3'>
+                            <div className='w-1/4 ml-20 flex text-blue-400 flex-row flex-nowrap justify-evenly items-center *:cursor-pointer'>
+                                {/* <input type="image" placeholder='i' src="" alt="" />
                         <input type="image" placeholder='g' src="" alt="" /> */}
-                            {/* <p>m</p>
+                                {/* <p>m</p>
                         <p>g</p>
                         <p>e</p>
                         <p>l</p> */}
 
-                            <FontAwesomeIcon icon={farImage} />
-                            <FontAwesomeIcon icon={fasVideo} />
-                            <FontAwesomeIcon icon={farFaceSmile} />
-                            <FontAwesomeIcon icon={fasLocationDot} />
+                                <FontAwesomeIcon icon={farImage} />
+                                <FontAwesomeIcon icon={fasVideo} />
+                                <FontAwesomeIcon icon={farFaceSmile} />
+                                <FontAwesomeIcon icon={fasLocationDot} />
+                            </div>
+                            <button className='py-1.5 px-3 bg-blue-500 text-gray-200 font-bold rounded-full mr-5'>Post</button>
                         </div>
-                        <button className='py-1.5 px-3 bg-blue-500 text-gray-200 font-bold rounded-full mr-5'>Post</button>
-                    </div>
-                </form>
+                    </form>
+                }
                 {currSection ? <ForYouHome newPost={newPost} /> : <FollowingHome newPost={newPost} />}
             </div>
             <RightNav />

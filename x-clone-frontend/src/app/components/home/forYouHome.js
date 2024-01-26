@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment as fasComment, faRetweet as fasRetweet, faHeart as fasHeart, faChartSimple as fasChartSimple, faBookmark as fasBookmark, faUpload as fasUpload, faEllipsis as fasEllipsis } from "@fortawesome/free-solid-svg-icons";
 import { faComment as farComment, faRetweet as farRetweet, faHeart as farHeart, faChartSimple as farChartSimple, faBookmark as farBookmark, faUpload as farUpload } from "@fortawesome/free-regular-svg-icons";
+import Link from 'next/link';
 
 
 const forYouHome = (props) => {
@@ -83,7 +84,7 @@ const forYouHome = (props) => {
             {/* <p>reposted</p> */}
             <div className='flex flex-row flex-nowrap w-full justify-evenly'>
               <div className='w-1/6 flex flex-col justify-start h-full items-center'>
-                <p className='w-fit bg-red-500 rounded-full px-5 text-sm py-3 text-center'>{post.fullname[0]}</p>
+                <Link href={{ pathname: "profile", query: `username=${post.username}` }} ><p className='w-fit bg-red-500 rounded-full px-5 text-sm py-3 text-center'>{post.fullname[0]}</p></Link>
               </div>
               <div className='w-5/6'>
                 <div className='flex flex-row flex-nowrap justify-between items-center'>
@@ -95,15 +96,26 @@ const forYouHome = (props) => {
                   <p>{post.post}</p>
                   {/* <p>{post.image}</p> */}
                 </div>
-                <div className='flex flex-row flex-nowrap justify-between items-center mt-2 text-gray-600'>
-                  <FontAwesomeIcon icon={farComment} />
-                  <FontAwesomeIcon icon={fasRetweet} />
+                <div className='flex flex-row flex-nowrap justify-between items-center mt-2 text-gray-600 *:flex *:flex-row *:flex-nowrap *:items-center *:gap-1'>
+                  <div>
+                    <FontAwesomeIcon icon={farComment} />
+                  </div>
+                  <div onClick={() => handleLike(post)} >
+                    <FontAwesomeIcon icon={fasRetweet} />
+                  </div>
                   <div onClick={() => handleLike(post)} >
                     <FontAwesomeIcon icon={farHeart} />
+                    <p>{post.likes}</p>
                   </div>
-                  <FontAwesomeIcon icon={fasChartSimple} />
-                  <FontAwesomeIcon icon={farBookmark} />
-                  <FontAwesomeIcon icon={fasUpload} />
+                  <div onClick={() => handleLike(post)} >
+                    <FontAwesomeIcon icon={fasChartSimple} />
+                  </div>
+                  <div onClick={() => handleLike(post)} >
+                    <FontAwesomeIcon icon={farBookmark} />
+                  </div>
+                  <div onClick={() => handleLike(post)} >
+                    <FontAwesomeIcon icon={fasUpload} />
+                  </div>
                 </div>
 
               </div>

@@ -29,3 +29,6 @@ body {
 a{
   color: inherit ;
 }
+*::-webkit-scrollbar {
+  display: none;
+}

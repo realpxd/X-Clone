@@ -31,11 +31,11 @@ const SideNav = (props) => {
 
   return (
     <>
-      {userData ?
+      {
         < div className='w-1/5 h-screen border-r border-gray-600 bg-black flex flex-col flex-nowrap justify-between items-start p-2 text-2xl ' >
           <div className='h-5/6 w-full flex flex-col flex-nowrap justify-around items-center   *:cursor-pointer'>
             {pagesProtocols.map((name, index) => (
-              <Link href={name == "hash" ? "#" : name == "addPost" ? { pathname: "/home", query: "isMakeTweet=1", } : name} key={name} ref={refs[name]} className={`w-full flex flex-row gap-5 flex-nowrap justify-between items-center text-gray-300 hover:text-red-500  ${name == "hash" ? 'text-white' : null} ${name == 'addPost' ? 'bg-blue-500 py-3 px-3 rounded-full text-white hover:text-gray-50 ' : null} `}>
+              <Link href={name == "hash" ? "#" : name == "addPost" ? { pathname: "/home", query: "isMakeTweet=1", } : name === "profile" ? { pathname: "profile", query: `username=${userData ? userData.username : null}`,} : name} key={name} ref={refs[name]} className={`w-full flex flex-row gap-5 flex-nowrap justify-between items-center text-gray-300 hover:text-red-500  ${name == "hash" ? 'text-white' : null} ${name == 'addPost' ? 'bg-blue-500 py-3 px-3 rounded-full text-white hover:text-white ' : null} `}>
                 <div className='w-1/5 flex flex-row flex-nowrap justify-around items-center '>
                   <FontAwesomeIcon icon={refIcons[index]} title={name} />
                 </div>
@@ -46,17 +46,14 @@ const SideNav = (props) => {
             ))}
           </div>
           <div className='w-full flex flex-row flex-nowrap justify-start items-start gap-4'>
-            <p className='mb-7 rounded-full bg-blue-500 w-12 h-9 text-center'>{userData.fullname[0]}</p>
+            <p className='mb-7 rounded-full bg-blue-500 w-12 h-9 text-center'>{userData ? userData.fullname[0] : "B"}</p>
             <div className='w-full flex flex-col flex-nowrap items-start text-base font-bold text-white'>
-              <p>{userData.fullname.toUpperCase()}</p>
-              <p className='text-gray-500 font-normal'>@{userData.username}</p>
+              <p>{userData ? userData.fullname.toUpperCase() : "BATMAN"}</p>
+              <p className='text-gray-500 font-normal'>@{userData ? userData.username : "doLogin"}</p>
             </div>
 
           </div>
         </div >
-        : <div>
-          <p>loading...</p>
-        </div>
       }
     </>
   )
