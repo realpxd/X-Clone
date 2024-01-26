@@ -10,17 +10,13 @@ app.use(express.json())
 const port = process.env.PORT || 5000
 const uri = process.env.ATLAS_URI
 
-
-
 const connectDB = async () => {
-    console.log('Connecting to MongoDB with URI:', uri);
     try {
         await mongoose.connect(uri)
             .then(() => console.log('"Connected to database"'))
             .catch((err) => {
                 console.log('Error connecting to database: ', err);
                 console.log('Retrying connection in 5 seconds...');
-                console.log('Connecting to MongoDB with URI:', uri);
                 setTimeout(() => {
                     connectDB()
                 }, 5000);
@@ -28,7 +24,6 @@ const connectDB = async () => {
     } catch (err) {
         console.log('Error connecting to database: ', err);
         console.log('Retrying connection in 5 seconds...');
-        console.log('Connecting to MongoDB with URI:', uri);
         setTimeout(() => {
             connectDB()
         }, 5000);
