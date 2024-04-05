@@ -63,7 +63,7 @@ const HomeNav = () => {
         console.log(post)
         console.log(userData);
         try {
-            const res = await fetch('http://localhost:5000/createPost', {
+            const res = await fetch(process.env.CREATEPOST, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
